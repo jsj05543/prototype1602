@@ -11,7 +11,7 @@
 	<package name="prototype1602" namespace="/" extends="struts-default">
 	<!-- ユーザー情報を追加登録するアクション -->
 		<action name="MySQLAction"
-			class="com.internousdev.prototype1602.action.MySQLAddAction"
+			class="com.internousdev.prototype1602.action.MySQLAction"
 			method="execute">
 			<result name="success">mysql.jsp</result>
 			<result name="error">index.jsp</result>
