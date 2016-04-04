@@ -8,7 +8,7 @@ package com.internousdev.prototype1602.dto;
  *
  */
 public class MySQLDTO {
-    private int id;
+    private String id;
     private String password;
     /**
      * @return password
@@ -25,14 +25,15 @@ public class MySQLDTO {
     /**
      * @return id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
     /**
      * @param id セットする id
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
+
 
 }

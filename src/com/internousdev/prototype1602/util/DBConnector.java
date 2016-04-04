@@ -13,15 +13,25 @@ import java.sql.SQLException;
  */
 public class DBConnector {
 
+    /**
+     * MySQLのドライバー名
+     */
+    private static String driverName = "com.mysql.jdbc.Driver";
 
+    /**
+     * MySQLのデータベースのURL
+     */
+    private static String url = "jdbc:mysql://localhost/";
 
-	private static String driverName = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost/prototype";
+    /**
+     * MySQLのユーザー名
+     */
+    private static String user = "root";
 
-	//適宜各自の環境に応じた設定にしてください（特にいじっていないのであればこのままでOK）
-	private static String user = "root";
-	private static String password = "mysql";
-
+    /**
+     * MySQLのパスワード
+     */
+    private static String pass = "mysql";
 
     /**
      * MySQLの指定したデータベースに接続するメソッド
@@ -33,7 +43,7 @@ public class DBConnector {
         Connection con = null;
         try{
             Class.forName(driverName);
-            con = (Connection) DriverManager.getConnection(url,user,password);
+            con = (Connection) DriverManager.getConnection(url,user,pass);
         }
         catch(ClassNotFoundException e){
             e.printStackTrace();
@@ -44,6 +54,4 @@ public class DBConnector {
         url = "jdbc:mysql://localhost/";
         return con;
     }
-
-
 }
