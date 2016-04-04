@@ -22,6 +22,8 @@ public class MySQLAddAction extends ActionSupport{
     public String execute(){
         String msg = ERROR;
         MySQLDAO dao = new MySQLDAO();
+        
+        
 
 
         return msg;
