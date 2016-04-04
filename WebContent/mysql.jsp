@@ -35,7 +35,7 @@
 
 	<s:form action="MySQLAction">
 		<s:select name="mode"
-			list="#{'insert':'追加','update':'更新','delete':'削除' }" />
+			list="#{'search':'検索','insert':'追加','update':'更新','delete':'削除' }" />
 		<s:textfield label="ID" name="id" placeholder="ユーザーIDを入力してください"
 			size="25" />
 		<br>

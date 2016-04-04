@@ -3,7 +3,13 @@
  */
 package com.internousdev.prototype1602.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.catalina.connector.Connector;
+
 import com.internousdev.prototype1602.dto.MySQLDTO;
+import com.internousdev.prototype1602.util.DBConnector;
 
 /**
  * ユーザー情報を取得、追加、更新、削除するDAOクラス
@@ -18,7 +24,10 @@ public class MySQLDAO {
      * @param id ユーザーID
      * @return MySQLDTO 取得に成功すればユーザー情報を格納したDTO、失敗すればnullを返す。
      */
-    public MySQLDTO select(int id){
+    public List<MySQLDTO> select(int id){
+        ArrayList<MySQLDTO> list = new ArrayList<>();
+        Connector conn = (Connector) DBConnector.getConnection("prototype");
+
         MySQLDTO dto = new MySQLDTO();
 
 
