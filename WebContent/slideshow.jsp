@@ -9,8 +9,8 @@
 </head>
 <body>
 <img src = "./img/Porsche01skato.jpg" width="60%" height="60%">
-<img src = "./img/Porsche02skato.jpg" width="60%" height="60%">>
-<img src = "./img/Porsche03skato.jpg" width="60%" height="60%">>
+<img src = "./img/Porsche02skato.jpg" width="60%" height="60%">
+<img src = "./img/Porsche03skato.jpg" width="60%" height="60%">
 
 
 </body>
