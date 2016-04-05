@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>d3</title>
-<script src="js/d3.js"></script>
+<script src="js/lib/d3.js"></script>
+<script type="text/javascript" src="js/lib/jquery-1.12.0.min.js"></script>
 
 <style>
 
@@ -21,12 +22,12 @@
 <body>
 
 <div class=float>
-	<div class=bowGraph></div>
+	<div id=bowGraph></div>
 </div>
 <div class = "clear"></div>
 
 <div class=float>
-	<div class=circleGraph></div>
+	<div id=circleGraph></div>
 </div>
 <div class = "clear"></div>
 <script type="text/javascript" src="js/myd3.js"></script>
