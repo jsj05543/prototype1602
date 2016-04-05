@@ -11,21 +11,30 @@ import com.mongodb.client.MongoDatabase;
  * @since 1.0
  */
 public class MongoDBConnector {
-	private MongoClient mc;
 	/**
-	 * @return
-	 * @throws UnknownHostException
+	 * Mongoクライアント
 	 */
-	public MongoDatabase getConnection()throws UnknownHostException{
+	private MongoClient mc;
+
+	/**
+	 * MongoDBに接続するためのメソッド
+	 *
+	 * @return database 指定したデータベースへの接続情報
+	 * @throws UnknownHostException
+	 *             ホスト解決に失敗したときの例外
+	 */
+	public MongoDatabase getConnection() throws UnknownHostException {
 		MongoDatabase database = null;
 		mc = new MongoClient("localhost", 27017);
-		database = mc.getDatabase("fruits");
+		database = mc.getDatabase("goods");
 		return database;
 	}
+
 	/**
+	 * MongoDBの接続を開放するためのメソッド
 	 *
 	 */
-	public void closeConnection(){
+	public void closeConnection() {
 		mc.close();
 	}
 }
