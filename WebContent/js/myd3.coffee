@@ -1,14 +1,17 @@
 class MyD3
 	size:{width:500,height:400}
 	lots:10
+	radius:180
+	innerRadius:50
 	getGraphWidth:->
-		console.log @size.width/@lots
 		return @size.width/@lots
 	
-	getRandomColor:->
-		r = Math.round (Math.random()*255)+1
-		g = Math.round (Math.random()*255)+1
-		b = Math.round (Math.random()*255)+1
+	getRandomColor:(value)->
+		# ¸îºÏ¤ò³ö¤·¡¢255¤ò’ì¤±¤ë
+		temp = Math.round (value/@size.height)*255
+		r = (temp-255)*-1
+		g = temp
+		b = 50
 		return "rgb("+r+","+g+","+b+")"
 	
 	generateData:->
@@ -42,8 +45,8 @@ class MyD3
 				height:(d)->
 					return d
 				,
-				fill:=>
-					return @getRandomColor()
+				fill:(d)=>
+					return @getRandomColor(d)
 				stroke:"rgb(0,0,0)"
 					
 				});
@@ -64,12 +67,47 @@ class MyD3
 		return
 		
 		
-	circleGraph:(data)->
+	circleGraph:()->
+		data = @generateData()
 		svg = d3.select("#circleGraph").append("svg")
-		svg.attr({
+			.attr({
 			width:@size.width,
 			height:@size.height
+			})
+			.append("g")
+			.attr("transform","translate("+@size.width/2+","+@size.height/2+")");
+		
+		arc = d3.svg.arc()
+				.outerRadius(@radius)
+				.innerRadius(@innerRadius);
+		pie = d3.layout.pie()
+				.sort(null)
+				.value((d)->
+					return d);
+		g = svg.selectAll(".fan")
+				.data(pie(data))
+				.enter()
+				.append("g")
+				.attr("class", "fan");
+		
+		g.append("path")
+			.attr({
+				d:arc,
+				fill:(d,i)=>
+					return @getRandomColor(d.value)
+				,
+				stroke:"black",
+				"stroke-width":"2"
 			});
+		g.append("text")
+		.attr(
+			"transform",(d)->
+				return "translate(" + arc.centroid(d) + ")"
+			)
+		.style("text-anchor", "middle")
+		.text((d)->
+				return d.value);
+		
 		
 	test:->
 		console.log @generateData()
