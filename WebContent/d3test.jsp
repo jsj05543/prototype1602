@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script src="d3/d3.js"></script>
+<title>d3</title>
+<script src="js/d3.js"></script>
+
 <style>
 
 	.float{
@@ -15,35 +16,20 @@
 		clear:both;
 	}
 
-
-	svg {
-		width:100%;
-	}
 </style>
 </head>
 <body>
-<script>
-
-</script>
 
 <div class=float>
-<%--棒グラフ--%>
-<script type="text/javascript" src="d3/js/test1.js"></script>
+	<div class=bowGraph></div>
 </div>
 <div class = "clear"></div>
-<!--
-<%--円グラフ1--%>
-<svg id="chart"></svg>
-<script type="text/javascript" src="d3/js/test2.js"></script>
-
-
-<%--円グラフ2--%>
-<script type="text/javascript" src="d3/js/test3.js"></script>
--->
 
 <div class=float>
-<%--円グラフ3--%>
-<script type="text/javascript" src="d3/js/test4.js"></script>
+	<div class=circleGraph></div>
 </div>
+<div class = "clear"></div>
+<script type="text/javascript" src="js/myd3.js"></script>
+
 </body>
 </html>
