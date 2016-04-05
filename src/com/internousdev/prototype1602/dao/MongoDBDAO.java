@@ -1,7 +1,6 @@
 package com.internousdev.prototype1602.dao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.bson.Document;
@@ -9,9 +8,12 @@ import org.bson.Document;
 import com.internousdev.prototype1602.util.MongoDBConnector;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.InsertOneModel;
 import com.mongodb.client.model.WriteModel;
 import com.opensymphony.xwork2.ActionSupport;
+
+import twitter4j.JSONObject;
+
+
 
 /**
  * @author RYUNOSUKE MATSUURA
@@ -30,7 +32,7 @@ public class MongoDBDAO extends ActionSupport {
 	 *
 	 * @return
 	 */
-	public String mongoInsert(Document fruitsName, String fruitsPrice, String fruitsText) {
+	public String mongoInsert(String fruitsName, String fruitsPrice, String fruitsText) {
 		MongoDatabase database = null;
 		MongoDBConnector conn = new MongoDBConnector();
 		try {
@@ -38,23 +40,25 @@ public class MongoDBDAO extends ActionSupport {
 			MongoCollection<Document> colls = database.getCollection("fruits");
 			List<WriteModel<Document>> list = new ArrayList<WriteModel<Document>>();
 
-			list.add();
+			JSONObject json = new JSONObject();
+			json.append();
+			Document doc = Document.parse(json.getString("fruits_name"));
+			colls.insertOne(doc);
 
 
-
-			list = Arrays.<WriteModel<Document>>asList(
-					new InsertOneModel<Document>(
-							new Document()
-							)
-					);
+//			list = Arrays.<WriteModel<Document>>asList(
+//					new InsertOneModel<Document>(
+//							new Document()
+//							)
+//					);
+//			colls.bulkWrite(list);
 
 //			List<WriteModel<Document>> inserts = Arrays.<WriteModel<Document>>asList(
 //					new InsertOneModel<Document>(
 //							new Document()
 //							)
 //					);
-
-			colls.bulkWrite(list);
+//			colls.bulkWrite(inserts);
 
 //			colls.bulkWrite([insertOne:{"document":{"fruits_id":,"fruits_name":fruitsName,"fruits_price":fruitsPrice,"fruits_text":fruitsText}}]);
 
