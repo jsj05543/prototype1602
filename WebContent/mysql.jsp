@@ -32,6 +32,8 @@
 	<s:text name="ユーザー情報操作" />
 	--------------
 	<br>
+	<s:property value="notifyMessage"/>
+	<br>
 
 	<s:form action="MySQLAction">
 		<s:select name="mode"

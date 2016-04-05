@@ -27,33 +27,43 @@ public class MySQLAction extends ActionSupport {
     private String password;
     private List<MySQLDTO> selectList;
 
+    private String notifyMessage;
+
     public String execute() {
         String msg = ERROR;
         MySQLDAO dao = new MySQLDAO();
-        if (mode.equals("search") && !(id.equals(""))) {
-            selectList = dao.select(id);
-            return SUCCESS;
-        } else if(mode.equals("search")){
-            selectList = dao.selectAll();
+        String notify = "";
+        if (mode.equals("search")) {
+            notify = "検索";
+            if (id.equals("")) {
+                selectList = dao.selectAll();
+            } else {
+                selectList = dao.select(id);
+            }
+            notifyMessage = notify + "が完了しました。";
             return SUCCESS;
         }
 
-        //search以外
+        // search以外
         selectList = dao.selectAll();
         if (mode.equals("insert")) {
+            notify = "追加";
             dao.insert(id, password);
             msg = SUCCESS;
 
         } else if (mode.equals("update")) {
+            notify = "更新";
             msg = SUCCESS;
             dao.update(id, password);
         } else if (mode.equals("delete")) {
+            notify = "削除";
             dao.delete(id);
             msg = SUCCESS;
 
         }
-
+        notifyMessage = notify + "が完了しました。";
         return msg;
+
     }
 
     /**
@@ -110,6 +120,20 @@ public class MySQLAction extends ActionSupport {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    /**
+     * @return notifyMessage
+     */
+    public String getNotifyMessage() {
+        return notifyMessage;
+    }
+
+    /**
+     * @param notifyMessage セットする notifyMessage
+     */
+    public void setNotifyMessage(String notifyMessage) {
+        this.notifyMessage = notifyMessage;
     }
 
 }
